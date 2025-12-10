@@ -1,3 +1,5 @@
+import GeolocationPrompt from '@/components/GeolocationPrompt';
+
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] py-12 px-4 sm:px-6 lg:px-8">
@@ -21,6 +23,10 @@ export default function Home() {
               View Map
             </a>
           </div>
+        </div>
+        
+        <div className="mt-12">
+          <GeolocationPrompt />
         </div>
       </div>
     </div>

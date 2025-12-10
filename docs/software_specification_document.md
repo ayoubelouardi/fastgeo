@@ -52,11 +52,11 @@ Privacy-first, crowdsourced internet speed testing platform with geolocation map
 
 ### 2.1 Product Perspective
 
-Standalone web application: no backend server, no user accounts. Frontend hosted on Netlify; data stored in Supabase PostgreSQL. Speed testing via embedded OpenSpeedTest; mapping via Leaflet.js + OpenStreetMap.
+Standalone web application: no backend server, no user accounts. Frontend hosted on Vercel or Netlify; data stored in Supabase PostgreSQL. Speed testing via embedded OpenSpeedTest; mapping via Leaflet.js (React Leaflet) + OpenStreetMap.
 
-**Flow:** User → Netlify Frontend → OpenSpeedTest → Supabase API → Database
+**Flow:** User → Next.js Frontend → OpenSpeedTest → Supabase API → Database
 
-No third-party services required beyond Netlify and Supabase.
+No third-party services required beyond Hosting and Supabase.
 
 ### 2.2 Product Functions
 
@@ -81,7 +81,7 @@ No third-party services required beyond Netlify and Supabase.
 
 | Category | Constraint |
 |----------|-----------|
-| **Technical** | Netlify + Supabase stack only; no custom backend server; OpenSpeedTest JS embedded |
+| **Technical** | Next.js + Supabase stack only; no custom backend server; OpenSpeedTest JS embedded |
 | **Browser** | Modern ES6+ support (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+) |
 | **Geolocation** | GPS accuracy ±25-100m; outdoor/indoor variance |
 | **GDPR** | EU users require consent banner; store only anonymized data |
@@ -234,20 +234,20 @@ No third-party services required beyond Netlify and Supabase.
 
 | Component | Technology |
 |-----------|-----------|
-| **Frontend** | Vanilla JS + HTML5/CSS3; no framework required |
+| **Frontend** | Next.js (React); Tailwind CSS |
 | **Speed Test** | OpenSpeedTest v2.0 (embedded from GitHub) |
-| **Map** | Leaflet.js + OpenStreetMap |
-| **Hosting** | Netlify (static, free tier) |
+| **Map** | React-Leaflet + OpenStreetMap |
+| **Hosting** | Vercel / Netlify (static/serverless) |
 | **Database** | Supabase PostgreSQL + PostGIS geospatial queries |
 | **Client SDK** | Supabase JS (@supabase/supabase-js) |
 | **Monitoring** | Sentry error tracking; UptimeRobot uptime |
-| **Testing** | Cypress for E2E; Jest for unit tests |
+| **Testing** | Cypress for E2E; Jest + React Testing Library for unit tests |
 
 **No backend server required.** Frontend queries Supabase directly via Row Level Security (public insert).
 
 ### 5.2 Architecture Flow
 
-Netlify Frontend (HTML/CSS/JS)
+Next.js Frontend (React)
        ↓
 OpenSpeedTest (embedded)
        ↓

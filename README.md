@@ -14,16 +14,16 @@ A privacy-first, crowdsourced internet speed testing platform with geolocation m
 
 ## Tech Stack
 
-- **Frontend**: Vanilla JS, HTML5, CSS3 (Hosted on Netlify)
+- **Frontend**: Next.js (React), Tailwind CSS (Hosted on Vercel/Netlify)
 - **Speed Test Engine**: [OpenSpeedTest](https://github.com/openspeedtest/Speed-Test)
-- **Map Visualization**: [Leaflet.js](https://leafletjs.com) + OpenStreetMap
+- **Map Visualization**: [React-Leaflet](https://react-leaflet.js.org/) + OpenStreetMap
 - **Database**: [Supabase](https://supabase.com) (PostgreSQL + PostGIS)
 
 ## Getting Started
 
 ### Prerequisites
 
-- A modern web browser (Chrome, Firefox, Safari, Edge).
+- Node.js (v18+) and npm/yarn/pnpm.
 - A Supabase account for the backend.
 
 ### Local Development
@@ -34,18 +34,30 @@ A privacy-first, crowdsourced internet speed testing platform with geolocation m
     cd fastgeo
     ```
 
-2.  Set up Supabase:
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Set up Supabase:
     - Create a new project in Supabase.
     - Enable PostGIS extension: `CREATE EXTENSION postgis;`
     - Create the `speed_tests` table (see `docs/software_specification_document.md` for schema).
     - Configure Row Level Security (RLS) for public inserts.
 
-3.  Configure Environment Variables:
-    - Create a `.env` file (or configured directly in your frontend code if strictly static without build process, though environment variables are recommended).
-    - Add your Supabase URL and Anon Key.
+4.  Configure Environment Variables:
+    - Create a `.env.local` file.
+    - Add your Supabase URL and Anon Key:
+      ```
+      NEXT_PUBLIC_SUPABASE_URL=your_url
+      NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+      ```
 
-4.  Run the application:
-    - Open `index.html` in your browser or serve it using a simple static server (e.g., `python3 -m http.server` or `npx serve`).
+5.  Run the application:
+    ```bash
+    npm run dev
+    ```
+    - Open `http://localhost:3000` in your browser.
 
 ## Usage
 

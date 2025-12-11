@@ -7,10 +7,10 @@ const GeolocationPrompt: React.FC = () => {
   const { location, error, loading, getLocation } = useGeolocation();
 
   return (
-    <div className="p-4 border rounded-lg shadow-md bg-white dark:bg-gray-800 max-w-md mx-auto mt-4">
+    <div className="p-4 border rounded-lg shadow-md bg-white dark:bg-gray-800 max-w-md mx-auto mt-4" suppressHydrationWarning>
       <h2 className="text-xl font-semibold mb-4">Geolocation Test</h2>
       
-      <div className="mb-4">
+      <div className="mb-4" suppressHydrationWarning>
         <button
           onClick={getLocation}
           disabled={loading}
